@@ -79,7 +79,7 @@ No server-side GitHub token is required for the public-repository scanner.
 
 ## Documentation and contributing
 
-- [Documentation](app/docs/page.tsx)
+- [Documentation](https://continuity-passport.vercel.app/docs)
 - [Contributing](CONTRIBUTING.md)
 - [Security Policy](SECURITY.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
