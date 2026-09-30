@@ -1,12 +1,1 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import './effects.css';
-
-export const metadata: Metadata = {
-  title: 'Web Creative Engine',
-  description: 'A visual, responsive web editor for building polished experiences.',
-};
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
-}
+import type { Metadata } from "next"; import "./globals.css"; export const metadata: Metadata={title:"Continuity Passport",description:"A deterministic handover record for running software from a public GitHub repository.",openGraph:{title:"Continuity Passport",description:"Could someone else run your production tomorrow?",type:"website"}}; export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body>{children}</body></html>}
