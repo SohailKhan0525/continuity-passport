@@ -1,1 +1,29 @@
-import type { Metadata } from "next"; import "./globals.css"; export const metadata: Metadata={title:"Continuity Passport",description:"A deterministic handover record for running software from a public GitHub repository.",openGraph:{title:"Continuity Passport",description:"Could someone else run your production tomorrow?",type:"website"}}; export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body>{children}</body></html>}
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Continuity Passport",
+  description:
+    "A deterministic handover record for running software from a public GitHub repository.",
+  openGraph: {
+    title: "Continuity Passport",
+    description: "Could someone else run your production tomorrow?",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
+}
