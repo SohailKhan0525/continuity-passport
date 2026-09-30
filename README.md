@@ -1,71 +1,96 @@
 # Continuity Passport
 
-Could someone else run your production tomorrow?
+**Could someone else run your production tomorrow?**
 
-Continuity Passport scans a public GitHub repository and turns the operational evidence it can find into a portable production handover record.
+Continuity Passport turns a public GitHub repository into a portable **Production Continuity Passport**: an evidence-based handover record showing what the codebase documents about deployment, recovery, ownership, dependencies, and operational readiness.
 
-It checks for documented deployment, environment configuration, CI/CD, tests, monitoring, backups and recovery, database/schema evidence, ownership, architecture, release/rollback guidance, runtime metadata, and common external dependencies.
+> **Important:** A repository scan is evidence about the codebase, not proof that production is configured correctly.
 
-> A repository scan is evidence about the codebase, not proof that production is configured correctly.
+## Why Continuity Passport?
 
-## What it does
+Production knowledge often lives across README files, deployment configs, CI workflows, environment documentation, migration files, runbooks, and a few people's heads.
 
-- Accepts a public GitHub repository URL.
-- Reads public repository metadata, the file tree, and a smart subset of relevant files.
-- Produces a deterministic continuity score based on observable repository evidence.
-- Separates evidence found, evidence not found, and items that need confirmation.
-- Generates a Continuity Manifest that can be edited and exported.
-- Exports a Markdown report and machine-readable JSON.
-- Provides a starter GitHub Action for repeatable continuity checks.
+Continuity Passport brings the repository evidence together so a developer, founder, CTO, or incoming maintainer can see what is documented — and what still needs confirmation.
 
-## What it does not do
+## What it checks
 
-Continuity Passport does not log into GitHub, access private repositories, inspect cloud dashboards, validate live infrastructure, retrieve secrets, or prove that a documented production dependency is actually configured.
+The scanner looks for evidence such as:
 
-Large repositories can also be limited by GitHub's public API tree responses and rate limits. The scanner reports those limitations instead of pretending it inspected everything.
+- deployment and hosting configuration
+- environment variables and `.env.example` documentation
+- CI/CD and GitHub Actions
+- tests and test infrastructure
+- health checks, monitoring, and observability
+- backup and restore guidance
+- database migrations and schema evidence
+- runtime versions and lockfiles
+- ownership and `CODEOWNERS`
+- architecture and system documentation
+- release and rollback procedures
+- production URLs and documented domains
+- external services such as payments, authentication, email, storage, and databases
 
-## Local development
+Results distinguish between **evidence found**, **evidence not found**, and **needs confirmation**.
 
-Requirements:
+## What you get
 
-- Node.js 20+
-- npm
+A generated passport includes:
 
-Install and run:
+- an overall continuity status
+- a deterministic evidence score
+- documented operational capabilities
+- missing or unclear areas
+- critical dependencies
+- ownership and handover information
+- deployment and recovery evidence
+- a verification checklist
+- the files inspected
+- an editable Continuity Manifest
+- Markdown and JSON exports
 
-```bash
-npm install
-npm run dev
-```
+## How it works
 
-Then open `http://localhost:3000`.
+1. Enter a public GitHub repository URL.
+2. Continuity Passport reads public repository metadata, the tree, and a targeted subset of relevant files.
+3. Deterministic scanner rules classify the evidence.
+4. The report turns those findings into a practical handover record.
 
-Build for production:
+No GitHub login or repository secrets are required for a public repository.
 
-```bash
-npm run build
-npm start
-```
+## Important limitations
 
-## Project structure
+Continuity Passport does **not**:
 
-- `app/` — Next.js application routes
-- `components/` — shared UI components
-- `lib/scanner.ts` — deterministic GitHub scanner and report generation
-- `public/continuity-action.yml` — starter GitHub Action
-- `SECURITY.md` — security reporting policy
-- `CONTRIBUTING.md` — contribution workflow
+- access private repositories
+- retrieve secrets or credentials
+- inspect your cloud provider dashboard
+- verify live infrastructure
+- prove that a deployment configuration is active
+- prove that backups actually work
+- prove that documented production dependencies are correctly configured
+
+GitHub API limits can also restrict inspection of very large repositories. When that happens, the scanner reports the limitation rather than implying complete coverage.
 
 ## Privacy
 
-Scanning is local-first. The browser requests public GitHub API resources directly. The application does not require GitHub credentials or a server-side GitHub token.
+Scanning is local-first. Public GitHub resources are requested directly from the browser, and recent scan results are stored locally on the device so a report can be reopened.
 
-Recent scan results are stored locally in the browser so the report can be reopened on the same device.
+No server-side GitHub token is required for the public-repository scanner.
 
-## License
+## Documentation and contributing
 
-Released under the MIT License. See [LICENSE](LICENSE).
+- [Documentation](app/docs/page.tsx)
+- [Contributing](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Support](SUPPORT.md)
 
 ## Project status
 
-Continuity Passport is an open-source project under active development. Treat scan results as operational evidence and verify critical production assumptions independently.
+Continuity Passport is an open-source project under active development.
+
+If you find a scanner rule that produces misleading evidence, please report it with a reproducible public repository example. The project favors transparent, deterministic evidence over assumptions.
+
+## License
+
+Continuity Passport is available under the [MIT License](LICENSE).
